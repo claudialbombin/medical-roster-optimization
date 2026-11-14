@@ -219,5 +219,15 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Markdown files
+# Local instructions for Claude (not shared)
 CLAUDE.md
+
+# Course materials and instructor feedback (kept local)
+Project_Guidelines.txt
+Propuesta_Proyecto_Guardias.pdf
+
+# Real hospital data (never commit)
+data/raw/
+
+# Gurobi
+gurobi.log
