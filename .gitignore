@@ -231,3 +231,11 @@ data/raw/
 
 # Gurobi
 gurobi.log
+
+# LaTeX build files
+*.aux
+*.fls
+*.fdb_latexmk
+*.out
+*.synctex.gz
+docs/checkpoint/*.log
