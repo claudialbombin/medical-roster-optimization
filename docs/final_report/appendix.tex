@@ -1,0 +1,55 @@
+% =====================================================================
+\clearpage
+\appendix
+\section{Cambios respecto a la propuesta}
+\label{app:feedback}
+
+La Tabla~\ref{tab:cambios} resume cómo hemos incorporado los comentarios a la propuesta del 11 de octubre y qué otros cambios de modelado hemos hecho desde entonces.
+
+{\small
+\begin{longtable}{@{}p{2.8cm}p{3.5cm}p{4.2cm}p{4.6cm}@{}}
+\caption{Cambios en la formulación desde la propuesta.}\label{tab:cambios}\\
+\toprule
+Elemento & Propuesta & Ahora & Motivo \\
+\midrule
+\endfirsthead
+\toprule
+Elemento & Propuesta & Ahora & Motivo \\
+\midrule
+\endhead
+Notación & Mayúsculas y minúsculas mezcladas ($e_{rdg}$, $E^{\max}$) & Parámetros en mayúsculas ($E_{rdg}$, $ROT_{rd}$, $PL_d$); variables en minúsculas ($e^{\max}$, $e^{\min}$) & Comentario del profesor \\
+Descripción de los parámetros & Etiquetas breves & Significado de cada subíndice (p.\,ej., $N_{dg}$: residentes necesarios para cubrir la guardia de tipo $g$ el día $d$) & Comentario del profesor \\
+Restricción (7) & $y_{rd} \le s_{rd}$ y se penaliza $s_{rd}$ & Sin restricción: $f_2$ penaliza directamente $Q_{rd}\,y_{rd}$ & El profesor no veía la conexión; $s_{rd} = y_{rd}$ en todo óptimo, así que era redundante \\
+Restricción (9) & Una versión y una nota & Explicación detallada de los salientes y una versión por escenario normativo & Comentario del profesor; el RD 951/2026 limita jornada más guardia consecutivas a 17~h \\
+Prioridad de las peticiones & $w_{rd}$ & $Q_{rd}$ & Evitar confusión con los pesos $W^k$ \\
+Restricciones (2), (6) y (9) & Duras & Con variables de déficit penalizadas en $f_1$ & Las versiones duras podían hacer el modelo infactible, contra el objetivo de decir qué guardias quedan sin cubrir \\
+Equidad (8) & $\Phi_r$ = fracción del año; todos los residentes & $H_r$ y $\Phi_r$ referidos al mismo periodo; solo $\mathcal{R}^F$ & El numerador y el denominador deben referirse al mismo periodo; quien no puede recibir festivos fijaría $e^{\max}$ o $e^{\min}$ \\
+Restricción (5) & Enlazada con el día 0 & Enlazada con los días $-1$ y $0$ & Detectar el patrón al cambiar de mes \\
+Objetivo & Suma ponderada con $W^1 \gg W^2 \gg W^3 \gg W^4$ & Lexicográfico (jerárquico de Gurobi) & Prioridades exactas sin problemas numéricos (Sección~\ref{sec:objetivos}) \\
+Escenario 2027 & Proyecto de real decreto; $c_r \le \kappa_r$ como decisión & RD 951/2026 aprobado; $C_r$ como dato & El módulo adicional solo cabe por razones formativas y con consentimiento \\
+\bottomrule
+\end{longtable}
+}
+
+\section{Contenido de la entrega y reproducción}
+\label{app:entrega}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Ruta & Contenido \\
+\midrule
+\texttt{informe\_final.pdf} & Este informe. \\
+\texttt{README.md} & Instrucciones de instalación y ejecución. \\
+\texttt{requirements.txt} & Dependencias de Python. \\
+\texttt{notebooks/01\_synthetic\_data\_generation.ipynb} & Generador de datos sintéticos (Sección~\ref{sec:datos}). \\
+\texttt{notebooks/02\_baseline\_model.ipynb} & Modelo, resolución, validación e indicadores (Secciones~\ref{sec:modelo} y \ref{sec:impl}). \\
+\texttt{notebooks/03\_analysis.ipynb} & Resultados y análisis de sensibilidad (Secciones~\ref{sec:resultados} y \ref{sec:analisis}). \\
+\texttt{data/synthetic/} & Las siete instancias (CSV y \texttt{meta.json} con la configuración y la semilla). \\
+\texttt{results/tables/}, \texttt{results/figures/} & Tablas y figuras generadas por los notebooks (prefijo \texttt{final\_} para las de este informe). \\
+\texttt{report/} & Código fuente \LaTeX{} de este informe. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Para reproducir los resultados: \texttt{pip install -r requirements.txt}, instalar una licencia académica de Gurobi y ejecutar los tres notebooks en orden desde la carpeta \texttt{notebooks/}. El notebook 03 tarda unos 11 minutos.

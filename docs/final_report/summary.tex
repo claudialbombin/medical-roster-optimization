@@ -1,0 +1,21 @@
+\section*{Resumen ejecutivo}
+\addcontentsline{toc}{section}{Resumen ejecutivo}
+
+\begin{tcolorbox}[colback=navy!4,colframe=navy,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt]
+\textbf{Problema.} Cada mes, un servicio hospitalario decide qué residente (MIR) cubre cada guardia cada día. El cuadrante debe cubrir todas las guardias con personal cualificado, cumplir la normativa, respetar vacaciones y peticiones, dejar personal para la planta y repartir con justicia los fines de semana y festivos. Hoy se hace a mano y el Real Decreto 951/2026 cambiará las reglas en septiembre de 2027.
+
+\smallskip
+\textbf{Qué hemos hecho.} Un modelo de optimización entera que, en menos de un segundo, construye el mejor cuadrante posible con cuatro prioridades: (1) cumplir todos los requisitos, (2) respetar las peticiones, (3) repartir con justicia los festivos teniendo en cuenta los meses anteriores y (4) evitar guardias en días alternos. Si un mes no se puede cubrir, el modelo no falla: dice qué falta y qué día. Lo hemos aplicado a un servicio sintético de 15 residentes y resuelto más de 500 variantes.
+
+\smallskip
+\textbf{Qué hemos aprendido.}
+\begin{itemize}[leftmargin=14pt]
+  \item \textbf{En un mes normal el modelo lo cubre todo}, respeta todas las peticiones y reduce la desigualdad en festivos de 21,7 a 14,8, pero el servicio no tiene margen: con un residente menos ya quedan guardias sin cubrir.
+  \item \textbf{El RD 951/2026 exige unos 10 residentes más} (de 14 a 24 disponibles) si se mantiene la estructura actual de guardias. Hay que decidir ya entre ampliar plantilla y rediseñar las guardias.
+  \item \textbf{En agosto y Navidad faltan personas por cómo coinciden las vacaciones}, no por falta de capacidad nominal. Cada guardia de domingo a jueves deja a un residente fuera de la planta al día siguiente, así que cubrir urgencias y mantener la planta compiten 1 a 1: con la plantilla actual se pueden cubrir todas las guardias de agosto si se reduce la actividad ordinaria en unos 2 residentes al día.
+  \item \textbf{La equidad necesita memoria}: equilibrar cada mes por separado no corrige un reparto heredado injusto; teniendo en cuenta los meses anteriores, la desigualdad acumulada se reduce mes a mes.
+  \item \textbf{Respetar peticiones y evitar días alternos no cuesta cobertura}: sin esos objetivos el cuadrante incumpliría 4 peticiones al mes y tendría hasta 23 patrones «día sí, día no».
+\end{itemize}
+\end{tcolorbox}
+
+\newpage

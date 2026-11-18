@@ -1,0 +1,28 @@
+\begin{table}[ht]
+\centering\small
+\caption{Qué aporta cada objetivo (escenario A). Cada fila elimina un objetivo de menor prioridad o sustituye el orden lexicográfico por la suma ponderada $1000 f_1 + 100 f_2 + 10 f_3 + f_4$.}
+\label{tab:objetivos}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Mes & Variante & \makecell{$f_1$ (guardias sin\\ cubrir + planta)} & \makecell{Peticiones\\ incumplidas} & \makecell{Rango de\\ festivos $f_3$} & \makecell{Patrones\\ $f_4$} & \makecell{Tiempo\\ (s)} \\
+\midrule
+\multirow{5}{*}{Enero 2027} & Modelo (lexicográfico) & 0 (0 + 0) & 0/17 & 14{,}8 & 1 & 0{,}3 \\
+ & Sin $f_2$ (peticiones) & 0 (0 + 0) & 4/17 & 14{,}8 & 1 & 0{,}3 \\
+ & Sin $f_3$ (equidad) & 0 (0 + 0) & 0/17 & 24{,}4 & 0 & 0{,}2 \\
+ & Sin $f_4$ (día sí, día no) & 0 (0 + 0) & 0/17 & 14{,}8 & 16 & 0{,}2 \\
+ & Suma ponderada & 0 (0 + 0) & 0/17 & 14{,}9 & 0 & 0{,}2 \\
+\midrule
+\multirow{5}{*}{Diciembre 2026} & Modelo (lexicográfico) & 6 (5 + 1) & 0/12 & 23{,}1 & 0 & 0{,}3 \\
+ & Sin $f_2$ (peticiones) & 6 (5 + 1) & 4/12 & 23{,}1 & 0 & 0{,}2 \\
+ & Sin $f_3$ (equidad) & 6 (6 + 0) & 0/12 & 29{,}0 & 0 & 0{,}2 \\
+ & Sin $f_4$ (día sí, día no) & 6 (6 + 0) & 0/12 & 23{,}1 & 23 & 0{,}2 \\
+ & Suma ponderada & 6 (5 + 1) & 0/12 & 23{,}1 & 0 & 0{,}1 \\
+\midrule
+\multirow{5}{*}{Agosto 2027} & Modelo (lexicográfico) & 39 (24 + 15) & 0/21 & 9{,}8 & 0 & 0{,}2 \\
+ & Sin $f_2$ (peticiones) & 39 (21 + 18) & 4/21 & 5{,}5 & 1 & 0{,}2 \\
+ & Sin $f_3$ (equidad) & 39 (24 + 15) & 0/21 & 13{,}2 & 0 & 0{,}2 \\
+ & Sin $f_4$ (día sí, día no) & 39 (22 + 17) & 0/21 & 9{,}8 & 14 & 0{,}2 \\
+ & Suma ponderada & 39 (21 + 18) & 0/21 & 9{,}8 & 0 & 0{,}1 \\
+\bottomrule
+\end{tabular}
+\end{table}
