@@ -1,0 +1,16 @@
+resident,year,senior,first_year,days_available,G_min,G_max,H,Phi
+R01,1,False,True,17,2,7,3,0.3495
+R02,1,False,True,17,2,7,1,0.8495
+R03,1,False,True,17,2,7,2,0.6828
+R04,2,False,False,17,2,7,2,0.5161
+R05,2,False,False,31,4,7,1,0.6667
+R06,2,False,False,17,2,7,2,0.8495
+R07,3,True,False,17,2,7,8,0.8495
+R08,3,True,False,31,4,7,5,1.0
+R09,3,True,False,31,4,7,1,0.6667
+R10,4,True,False,0,0,0,5,0.5
+R11,4,True,False,31,4,7,5,1.0
+R12,4,True,False,17,2,7,0,0.5161
+R13,5,True,False,31,4,7,2,0.6667
+R14,5,True,False,17,2,7,7,0.6828
+R15,5,True,False,31,4,7,0,0.5

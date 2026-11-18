@@ -1,0 +1,13 @@
+,jan2027_base (A),dec2026_christmas (A),jan2027_base_minus1 (A),jan2027_base_minus2 (A),jan2027_base_minus3 (A),jan2027_base_minus4 (A),jan2027_base (B)
+uncovered duty positions,0,5,2,9,20,32,37
+missing seniors,0,0,0,0,0,0,0
+missing residents for ordinary activity,0,1,0,0,5,12,0
+duties below training minimum,0,0,0,0,0,0,0
+f1 unmet requirements,0,6,2,9,25,44,37
+requests violated / total,0 / 17,0 / 12,0 / 17,0 / 15,0 / 15,0 / 13,0 / 17
+f2 weighted violated requests,0,0,0,0,0,0,0
+weekend/holiday load range before the month,21.71,27.54,21.71,21.71,21.71,21.71,21.71
+f3 weekend/holiday load range after the month,14.78,23.08,14.78,14.78,14.78,14.78,17.14
+f4 alternate-day patterns,1,0,1,1,1,1,0
+duties per resident (min-max),5-7,4-7,7-7,7-7,4-7,3-7,4-4
+min residents for ordinary activity on a working day,9,8,9,9,8,7,9

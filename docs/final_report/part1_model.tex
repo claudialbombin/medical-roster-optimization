@@ -1,0 +1,280 @@
+% =====================================================================
+\section{Introducción}
+\label{sec:intro}
+
+\paragraph{El problema.} En los hospitales públicos españoles cada servicio elabora cada mes su cuadrante de guardias: decide qué residente (MIR) cubre cada tipo de guardia cada día. El cuadrante tiene que cubrir todas las guardias con residentes cualificados y con suficientes residentes mayores, cumplir la normativa laboral (descanso tras la guardia, máximo mensual), respetar vacaciones, rotaciones externas y peticiones de días libres, dejar personal suficiente para la actividad ordinaria del servicio (planta y consultas) y repartir con justicia, a lo largo del año, las guardias más duras: fines de semana y festivos.
+
+\paragraph{Por qué importa.} Normalmente el cuadrante se hace a mano en una hoja de cálculo. Lleva horas cada mes, a menudo se percibe como injusto y no permite responder a preguntas de planificación como \emph{¿cuántos residentes necesita el servicio para cubrir agosto?} La cuestión es además urgente: el \emph{Real Decreto 951/2026} (BOE de 6 de noviembre de 2026), que modifica el RD~1146/2006, limita desde el 1 de septiembre de 2027 la duración de cada guardia de los residentes a 17~horas y el tiempo de guardia a 68~horas al mes. Hoy un residente puede hacer hasta 7 guardias al mes; con la nueva norma serán, en la práctica, cuatro módulos de 17~h. Los servicios tendrán que rehacer sus cuadrantes y, probablemente, sus plantillas.
+
+\paragraph{Qué aporta este trabajo.} Formulamos el problema como un modelo de programación lineal entera mixta con cuatro objetivos jerarquizados, lo implementamos en Python con Gurobi y lo usamos para responder cuatro preguntas de gestión:
+\begin{enumerate}[label=\textbf{P\arabic*.}]
+  \item ¿Se puede cubrir el mes con la plantilla actual? Si no, ¿qué falta exactamente y cuándo?
+  \item ¿Cuántos residentes necesita el servicio en el régimen actual, con acuerdos locales más estrictos y con el RD~951/2026, y en meses difíciles como Navidad o agosto?
+  \item ¿Cómo repartir con justicia los fines de semana y festivos a lo largo de varios meses?
+  \item ¿Qué cuesta cada objetivo (peticiones, equidad, patrones agotadores) y qué decisiones de gestión esconde el modelo?
+\end{enumerate}
+
+Como seguimos sin autorización para usar datos del hospital, todos los resultados se obtienen con \textbf{datos sintéticos} generados de forma reproducible (Sección~\ref{sec:datos}). Describen un servicio verosímil, no un hospital real: lo que interesa es el mecanismo y el orden de magnitud de los efectos, no las cifras exactas.
+
+El informe se organiza así: la Sección~\ref{sec:datos} describe los datos y supuestos; la Sección~\ref{sec:modelo}, el modelo matemático completo; la Sección~\ref{sec:impl}, la implementación; la Sección~\ref{sec:resultados}, los cuadrantes obtenidos; la Sección~\ref{sec:analisis}, el análisis de sensibilidad, y la Sección~\ref{sec:conclusiones}, las conclusiones y recomendaciones. El Anexo~\ref{app:feedback} recoge los cambios hechos a partir de los comentarios a la propuesta.
+
+% =====================================================================
+\section{Datos y supuestos}
+\label{sec:datos}
+
+\paragraph{Origen de los datos.} Un generador reproducible (\texttt{notebooks/01\_synthetic\_data\_generation.ipynb}, semilla fija por instancia) construye todos los parámetros del modelo a partir de información pública (normativa, calendario de festivos de la Comunidad de Madrid mediante el paquete \texttt{holidays}) y de los supuestos de la Tabla~\ref{tab:supuestos}, que habría que validar con el servicio. El generador comprueba el dominio y la coherencia de cada parámetro; por ejemplo, que la elegibilidad $E_{rdg}$ y la actividad ordinaria $ROT_{rd}$ salgan del mismo calendario de disponibilidad, para que nadie de vacaciones pueda estar de guardia ni contar en planta. Regenerar los datos reproduce byte a byte los ficheros de \texttt{data/synthetic/}.
+
+\begin{table}[ht]
+\centering\small
+\caption{Supuestos del generador de datos sintéticos.}
+\label{tab:supuestos}
+\begin{tabularx}{\linewidth}{@{}p{3.1cm}X@{}}
+\toprule
+Elemento & Supuesto \\
+\midrule
+Plantilla & 15 residentes, 3 por año de residencia (R1--R5). Mayores: R3 o superior. \\
+Tipos de guardia & Urgencias (\texttt{ED}): 2 residentes al día, al menos 1 mayor y como mucho 1 R1. Planta (\texttt{WARD}): 1 residente al día, R2 o superior. En total, 3 plazas al día y 93 en un mes de 31 días. \\
+Límites mensuales & Mínimo formativo de 4 guardias, prorrateado por los días disponibles; máximo de 7 (RD 1146/2006). \\
+Actividad ordinaria & 9 residentes necesarios cada día laborable ($PL_d = 9$), también en verano. \\
+Días duros ($\mathcal{F}$) & Sábados, domingos y festivos de la Comunidad de Madrid. \\
+Disponibilidad & Un residente de rotación externa todo el mes, bloques de vacaciones y días sueltos de curso. \\
+Peticiones & De 0 a 3 días pedidos libres por residente (la mitad en fin de semana), con prioridad 1 (50\,\%), 2 (35\,\%) o 3 (15\,\%). \\
+Histórico & Año de residencia desde junio. Guardias en festivo previas generadas con un sesgo individual, de modo que el reparto heredado está desequilibrado. \\
+Mes anterior & 3 residentes de guardia el último día y otros 3 el penúltimo. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Instancias.} Usamos siete meses (Tabla~\ref{tab:instancias}). Enero de 2027 es el mes base. Diciembre de 2026 (tres festivos y seis bloques de vacaciones de 7 días) y agosto de 2027 (ocho residentes con 14 días de vacaciones) son los meses difíciles. Febrero a mayo de 2027 continúan enero y sirven para simular varios meses seguidos (Sección~\ref{sec:equidad}).
+
+\input{tab_instances.tex}
+
+\paragraph{Implicaciones de los supuestos.}
+\begin{itemize}
+  \item \textbf{El servicio va justo.} Hay 93 plazas al mes y una capacidad nominal de $14 \times 7 = 98$ guardias (un residente está fuera todo el mes). Con un margen tan pequeño, cualquier ausencia se nota, lo que hace interesante el análisis de plantilla.
+  \item \textbf{Agosto es pesimista.} Mantener $PL_d = 9$ en agosto supone que la actividad ordinaria no se reduce en verano. Con las vacaciones, ya faltan residentes en planta aunque nadie hiciera guardias (déficit estructural de la Tabla~\ref{tab:instancias}). La Sección~\ref{sec:planta} cuantifica cuánto cambia el resultado si se relaja este requisito.
+  \item \textbf{El histórico desequilibrado} hace que la equidad con memoria tenga trabajo que hacer; con un histórico perfectamente equilibrado el criterio de equidad apenas cambiaría el cuadrante.
+\end{itemize}
+
+\paragraph{Escenarios normativos.} \textbf{Escenario A} (régimen actual, RD 1146/2006): como máximo 7 guardias al mes; quien está de guardia un día laborable trabaja antes la jornada ordinaria de mañana. \textbf{Escenario B} (RD 951/2026, desde septiembre de 2027): guardias de 17~h como máximo, contando la jornada ordinaria si es consecutiva, y 68~h de guardia al mes. Como el servicio aún no ha rediseñado sus tipos de guardia, aproximamos B suponiendo que todas las guardias son módulos de 17~h (Sección~\ref{sec:impl}).
+
+% =====================================================================
+\section{Modelo matemático}
+\label{sec:modelo}
+
+El modelo decide qué residente cubre cada tipo de guardia cada día del mes. Es un modelo de programación lineal entera mixta (MILP) con cuatro objetivos ordenados por prioridad.
+
+\paragraph{Convención de notación.} Los \textbf{parámetros} (datos de entrada) se escriben en \textbf{mayúsculas} ($N_{dg}$, $E_{rdg}$, $ROT_{rd}$\dots) y las \textbf{variables de decisión} en \textbf{minúsculas} ($x_{rdg}$, $h_{dg}$, $e^{\max}$\dots). Cada símbolo se describe indicando el significado de todos sus subíndices: $r$ es siempre un residente, $d$ un día y $g$ un tipo de guardia. Cada elemento ocupa una línea: primero el símbolo, después su nombre y después lo que modela; en las restricciones, primero el nombre y después la formulación.
+
+\subsection{Conjuntos}
+
+{\small
+\begin{longtable}{@{}p{2.6cm}p{3.0cm}p{10.0cm}@{}}
+\toprule
+Símbolo & Nombre & Qué modela \\
+\midrule
+\endhead
+$r \in \mathcal{R}$ & Residentes & Residentes (MIR) que entran en el cuadrante del servicio. \\
+$\mathcal{R}_S \subseteq \mathcal{R}$ & Residentes mayores & Residentes con experiencia suficiente para garantizar la seguridad de una guardia (aquí, R3 o superior). \\
+$\mathcal{R}_1 \subseteq \mathcal{R}$ & Residentes de primer año & Residentes R1, cuyo número por guardia está limitado. \\
+$d \in \mathcal{D}$ & Días del mes & Días del mes que se planifica, $\mathcal{D} = \{1, \dots, n\}$, donde $n$ es el número de días del mes. \\
+$d \in \{-1, 0\}$ & Días del mes anterior & Penúltimo ($d = -1$) y último ($d = 0$) día del mes anterior. Solo aparecen a través de datos, para enlazar el descanso y los patrones con el mes previo. \\
+$g \in \mathcal{G}$ & Tipos de guardia & Tipos de guardia del servicio (aquí, urgencias \texttt{ED} y planta \texttt{WARD}). \\
+$\mathcal{F} \subseteq \mathcal{D}$ & Días duros & Sábados, domingos y festivos del mes: las guardias más penosas, que deben repartirse con justicia. \\
+$\mathcal{L} = \mathcal{D} \setminus \mathcal{F}$ & Días laborables & Días con actividad ordinaria (planta y consultas). \\
+$\mathcal{P} \subseteq \mathcal{R} \times \mathcal{D}$ & Peticiones de día libre & Pares $(r, d)$ tales que el residente $r$ ha pedido no tener guardia el día $d$. \\
+$\mathcal{R}^F \subseteq \mathcal{R}$ & Residentes comparados en equidad & Residentes con $\Phi_r > 0$ que pueden hacer alguna guardia en un día de $\mathcal{F}$ este mes. Se excluye a quien no puede recibir festivos este mes (p.\,ej., de rotación externa), porque su carga no puede cambiar y fijaría artificialmente el máximo o el mínimo. \\
+\bottomrule
+\end{longtable}\addtocounter{table}{-1}% uncaptioned longtable: do not consume a table number
+}
+
+\subsection{Parámetros}
+
+{\small
+\begin{longtable}{@{}p{2.6cm}p{3.0cm}p{10.0cm}@{}}
+\toprule
+Símbolo & Nombre & Qué modela \\
+\midrule
+\endhead
+$N_{dg} \in \mathbb{Z}_{\ge 0}$ & Personas necesarias & Número de residentes necesarios para cubrir la guardia de tipo $g$ el día $d$. \\
+$S_{dg} \in \mathbb{Z}_{\ge 0}$ & Mínimo de mayores & Número mínimo de residentes mayores ($\mathcal{R}_S$) en la guardia de tipo $g$ el día $d$. \\
+$U_{dg} \in \mathbb{Z}_{\ge 0}$ & Máximo de R1 & Número máximo de residentes de primer año ($\mathcal{R}_1$) en la guardia de tipo $g$ el día $d$. \\
+$E_{rdg} \in \{0, 1\}$ & Elegibilidad y disponibilidad & Vale 1 si el residente $r$ está cualificado para la guardia de tipo $g$ y disponible el día $d$ (no está de vacaciones, rotación externa, curso o baja); 0 en otro caso. \\
+$G^{\min}_r \in \mathbb{Z}_{\ge 0}$ & Mínimo mensual & Número mínimo de guardias que el residente $r$ debe hacer en el mes por obligación formativa, prorrateado por los días que $r$ está disponible. \\
+$G^{\max}_r \in \mathbb{Z}_{\ge 0}$ & Máximo mensual & Número máximo de guardias que el residente $r$ puede hacer en el mes (7 en el escenario A, o menos con acuerdos locales). \\
+$Q_{rd} > 0$ & Prioridad de la petición & Importancia de la petición del residente $r$ de no tener guardia el día $d$, para $(r, d) \in \mathcal{P}$. Valores mayores indican peticiones más importantes (aquí 1, 2 o 3). \\
+$H_r \in \mathbb{Z}_{\ge 0}$ & Histórico de festivos & Número de guardias en fin de semana o festivo que el residente $r$ ha hecho en los meses anteriores del periodo de referencia (el año de residencia). \\
+$\Phi_r \in [0, 1]$ & Fracción disponible & Fracción del periodo de referencia, desde su inicio hasta el mes actual incluido, en la que el residente $r$ ha estado disponible para hacer guardias. \\
+$ROT_{rd} \in \{0, 1\}$ & Actividad ordinaria prevista & Vale 1 si el residente $r$ tiene asignada actividad ordinaria (planta, consultas) en el servicio el día laborable $d$; 0 en otro caso (vacaciones, rotación externa, curso). \\
+$PL_d \in \mathbb{Z}_{\ge 0}$ & Personal necesario en planta & Número mínimo de residentes necesarios para la actividad ordinaria el día laborable $d$. \\
+$Y_{rd} \in \{0, 1\}$ & Guardias del mes anterior & Para $d \in \{-1, 0\}$, vale 1 si el residente $r$ estuvo de guardia el día $d$ del mes anterior ($d = 0$: último día; $d = -1$: penúltimo). \\
+$T_g > 0$ & Duración de la guardia & Duración en horas de la guardia de tipo $g$ (solo escenario B). \\
+$C_r \in \{0, 1\}$ & Módulo adicional autorizado & Vale 1 si el residente $r$ tiene autorizado un módulo de guardia adicional ese mes (escenario B: solo por razones formativas y con su consentimiento expreso); 0 en otro caso. Es un dato, no una decisión. \\
+\bottomrule
+\end{longtable}\addtocounter{table}{-1}% uncaptioned longtable: do not consume a table number
+}
+
+\subsection{Variables de decisión}
+
+{\small
+\begin{longtable}{@{}p{2.6cm}p{3.0cm}p{10.0cm}@{}}
+\toprule
+Símbolo & Nombre & Qué modela \\
+\midrule
+\endhead
+$x_{rdg} \in \{0, 1\}$ & Asignación & Vale 1 si el residente $r$ cubre la guardia de tipo $g$ el día $d$; 0 en otro caso. Es la decisión principal: el cuadrante. \\
+$h_{dg} \ge 0$ & Plazas sin cubrir & Número de plazas de la guardia de tipo $g$ que quedan sin cubrir el día $d$. \\
+$h^{S}_{dg} \ge 0$ & Mayores que faltan & Número de residentes mayores que faltan en la guardia de tipo $g$ el día $d$ para llegar al mínimo $S_{dg}$. \\
+$h^{P}_{d} \ge 0$ & Personal que falta en planta & Número de residentes que faltan para la actividad ordinaria el día laborable $d$. \\
+$h^{G}_{r} \ge 0$ & Guardias por debajo del mínimo & Número de guardias que le faltan al residente $r$ para llegar a su mínimo formativo $G^{\min}_r$. \\
+$v_{rd} \ge 0$ & Patrón «día sí, día no» & Vale 1 cuando el residente $r$ está de guardia el día $d$ y también el día $d+2$ (guardia, libre, guardia); 0 en otro caso. \\
+$e^{\max}$ & Carga máxima de festivos & Mayor carga normalizada de guardias en fin de semana o festivo entre los residentes de $\mathcal{R}^F$. \\
+$e^{\min}$ & Carga mínima de festivos & Menor carga normalizada de guardias en fin de semana o festivo entre los residentes de $\mathcal{R}^F$. \\
+\bottomrule
+\end{longtable}\addtocounter{table}{-1}% uncaptioned longtable: do not consume a table number
+}
+
+\paragraph{Expresión auxiliar.} Para escribir las restricciones de forma compacta usamos
+\[
+y_{rd} = \sum_{g \in \mathcal{G}} x_{rdg} \quad (d \in \mathcal{D}), \qquad y_{rd} = Y_{rd} \quad (d \in \{-1, 0\}).
+\]
+$y_{rd}$ no es una variable nueva sino una expresión lineal: vale 1 si el residente $r$ está de guardia (de cualquier tipo) el día $d$ y 0 si no. Para los dos últimos días del mes anterior es un dato.
+
+Las variables de déficit $h_{dg}, h^{S}_{dg}, h^{P}_{d}, h^{G}_{r}$ y $v_{rd}$ se declaran continuas. Como los requisitos $N_{dg}$, $S_{dg}$, $PL_d$ y $G^{\min}_r$ son enteros y $x_{rdg}$ es binaria, en el óptimo toman valores enteros.
+
+\subsection{Función objetivo}
+
+Los cuatro objetivos se optimizan en orden estricto de prioridad (optimización lexicográfica):
+\[
+\operatorname{lex\,min}\; \bigl(f_1,\; f_2,\; f_3,\; f_4\bigr).
+\]
+Primero se minimiza $f_1$; después, $f_2$ entre todos los cuadrantes con $f_1$ óptimo; después, $f_3$ entre los que además tienen $f_2$ óptimo, y por último $f_4$.
+
+{\small
+\begin{longtable}{@{}p{6.0cm}p{2.4cm}p{7.2cm}@{}}
+\toprule
+Símbolo & Nombre & Qué modela \\
+\midrule
+\endhead
+$\displaystyle f_1 = \sum_{d \in \mathcal{D}} \sum_{g \in \mathcal{G}} \bigl(h_{dg} + h^{S}_{dg}\bigr) + \sum_{d \in \mathcal{L}} h^{P}_{d} + \sum_{r \in \mathcal{R}} h^{G}_{r}$ & Requisitos incumplidos & Número total de personas que faltan: plazas de guardia sin cubrir, mayores que faltan, residentes que faltan en planta y guardias por debajo del mínimo formativo. Vale 0 si el mes se puede cubrir por completo; si es positivo, el cuadrante dice exactamente qué requisito falla y qué día. Sumar los cuatro déficits con el mismo peso (una persona que falta = 1) es un supuesto de gestión que analizamos en la Sección~\ref{sec:planta}. \\[4pt]
+$\displaystyle f_2 = \sum_{(r, d) \in \mathcal{P}} Q_{rd}\, y_{rd}$ & Peticiones incumplidas & Suma de las prioridades de las peticiones incumplidas. Si el residente $r$ pidió libre el día $d$ y aun así tiene guardia ese día, $y_{rd} = 1$ y se suma la prioridad $Q_{rd}$; si la petición se respeta, $y_{rd} = 0$ y no cuesta nada. \\[4pt]
+$f_3 = e^{\max} - e^{\min}$ & Equidad & Diferencia entre el residente más cargado y el menos cargado en guardias de fin de semana o festivo, acumuladas en el periodo de referencia y normalizadas por disponibilidad. \\[4pt]
+$\displaystyle f_4 = \sum_{r \in \mathcal{R}} \sum_{d = -1}^{n-2} v_{rd}$ & Patrones agotadores & Número de patrones «guardia, libre, guardia», incluidos los que empiezan en el mes anterior. \\
+\bottomrule
+\end{longtable}\addtocounter{table}{-1}% uncaptioned longtable: do not consume a table number
+}
+
+\paragraph{Por qué lexicográfico y no una suma ponderada.} Una suma $W^1 f_1 + W^2 f_2 + W^3 f_3 + W^4 f_4$ solo reproduce una prioridad estricta si cada peso supera el mayor valor posible de todos los términos de menor prioridad juntos. Eso exige pesos de varios órdenes de magnitud, que dan problemas numéricos: la tolerancia del solver puede dejar sin optimizar los términos de menor prioridad. Gurobi resuelve el problema lexicográfico de forma nativa (optimización multiobjetivo jerárquica), así que las prioridades se cumplen exactamente. La Sección~\ref{sec:objetivos} muestra que la suma ponderada da, de hecho, cuadrantes distintos.
+
+\subsection{Restricciones}
+
+\newcommand{\restr}[2]{\par\smallskip\noindent\textbf{(#1) #2.}\par\nopagebreak}
+
+\restr{1}{Cobertura de cada guardia}
+\[
+\sum_{r \in \mathcal{R}} x_{rdg} + h_{dg} = N_{dg} \qquad \forall d \in \mathcal{D},\; g \in \mathcal{G}
+\]
+Los residentes asignados a la guardia de tipo $g$ el día $d$, más las plazas que quedan sin cubrir, igualan a las personas necesarias. Nunca se asignan más residentes de los necesarios. Si faltan residentes, $h_{dg}$ dice cuántas plazas quedan vacías en lugar de que el modelo sea infactible.
+
+\restr{2a}{Presencia de residentes mayores}
+\[
+\sum_{r \in \mathcal{R}_S} x_{rdg} + h^{S}_{dg} \ge S_{dg} \qquad \forall d \in \mathcal{D},\; g \in \mathcal{G}
+\]
+Cada guardia debe tener al menos $S_{dg}$ residentes mayores, para que haya alguien con experiencia. Si no hay suficientes mayores disponibles, $h^{S}_{dg}$ cuenta cuántos faltan.
+
+\restr{2b}{Límite de residentes de primer año}
+\[
+\sum_{r \in \mathcal{R}_1} x_{rdg} \le U_{dg} \qquad \forall d \in \mathcal{D},\; g \in \mathcal{G}
+\]
+Como mucho $U_{dg}$ residentes de primer año en la guardia de tipo $g$ el día $d$, para no concentrar a los menos experimentados.
+
+\restr{3a}{Elegibilidad y disponibilidad}
+\[
+x_{rdg} \le E_{rdg} \qquad \forall r \in \mathcal{R},\; d \in \mathcal{D},\; g \in \mathcal{G}
+\]
+Un residente solo puede cubrir los tipos de guardia para los que está cualificado y solo los días en que está disponible. En la implementación, $x_{rdg}$ solo se crea cuando $E_{rdg} = 1$.
+
+\restr{3b}{Como máximo una guardia al día}
+\[
+y_{rd} \le 1 \qquad \forall r \in \mathcal{R},\; d \in \mathcal{D}
+\]
+Un residente no puede cubrir dos tipos de guardia el mismo día.
+
+\restr{4}{Descanso tras la guardia}
+\[
+y_{rd} + y_{r,d+1} \le 1 \qquad \forall r \in \mathcal{R},\; d \in \{0, 1, \dots, n-1\}
+\]
+Nadie hace guardia dos días seguidos: tras una guardia hay descanso obligatorio. Para $d = 0$ la restricción es $Y_{r0} + y_{r1} \le 1$, es decir, quien estuvo de guardia el último día del mes anterior no puede tener guardia el día 1.
+
+\restr{5}{Evitar guardias en días alternos (restricción blanda)}
+\[
+y_{rd} + y_{r,d+2} \le 1 + v_{rd} \qquad \forall r \in \mathcal{R},\; d \in \{-1, 0, \dots, n-2\}
+\]
+Si el residente $r$ tiene guardia los días $d$ y $d+2$ (y, por (4), libra el $d+1$), el lado izquierdo vale 2 y obliga a $v_{rd} = 1$, que se penaliza en $f_4$. No se prohíbe porque a veces es inevitable, pero es un patrón agotador que el modelo evita si puede. Para $d \in \{-1, 0\}$ el patrón cruza el cambio de mes.
+
+\restr{6a}{Mínimo mensual (obligación formativa)}
+\[
+\sum_{d \in \mathcal{D}} y_{rd} + h^{G}_{r} \ge G^{\min}_r \qquad \forall r \in \mathcal{R}
+\]
+Las guardias forman parte de la formación del residente: cada uno debe hacer al menos $G^{\min}_r$. Si no es posible, $h^{G}_{r}$ dice cuántas le faltan.
+
+\restr{6b}{Máximo mensual}
+\[
+\sum_{d \in \mathcal{D}} y_{rd} \le G^{\max}_r \qquad \forall r \in \mathcal{R}
+\]
+Límite legal (o del acuerdo local) de guardias al mes de cada residente.
+
+\restr{7}{Peticiones de días libres: no requieren restricción}
+\par\noindent Se tratan íntegramente en el objetivo $f_2$. Para $(r, d) \in \mathcal{P}$, $y_{rd} = 1$ significa que el residente $r$ tiene guardia un día que pidió libre, es decir, \emph{esa guardia es el incumplimiento de la petición}, y $f_2$ suma su prioridad $Q_{rd}$. En la propuesta usábamos además una variable $s_{rd}$ con $y_{rd} \le s_{rd}$; como $s_{rd}$ se minimiza, en todo óptimo $s_{rd} = y_{rd}$, así que era redundante y la hemos eliminado. Mantenemos la numeración para que sea comparable con la propuesta.
+
+\restr{8}{Reparto justo de fines de semana y festivos (con memoria)}
+\[
+e^{\min} \le \frac{H_r + \sum_{d \in \mathcal{F}} y_{rd}}{\Phi_r} \le e^{\max} \qquad \forall r \in \mathcal{R}^F
+\]
+El numerador cuenta las guardias en fin de semana o festivo del residente $r$ en todo el periodo de referencia: las de meses anteriores ($H_r$) más las que se le asignan este mes. Dividir por $\Phi_r$, la fracción del mismo periodo en la que $r$ ha estado disponible, hace comparables a residentes con distinta disponibilidad: quien ha estado disponible la mitad del tiempo debería cargar con la mitad. Como $\Phi_r$ es un dato, la restricción es lineal. $e^{\max}$ y $e^{\min}$ acotan la carga de todos, y $f_3 = e^{\max} - e^{\min}$ mide la diferencia entre el más y el menos cargado. La memoria ($H_r$) permite compensar a lo largo de los meses lo que un solo mes no puede equilibrar.
+
+\restr{9}{Personal suficiente para la actividad ordinaria}
+\begin{align*}
+&\text{Escenario A:} && \sum_{r \in \mathcal{R}} ROT_{rd}\,\bigl(1 - y_{r,d-1}\bigr) + h^{P}_{d} \ge PL_d \qquad \forall d \in \mathcal{L}\\
+&\text{Escenario B:} && \sum_{r \in \mathcal{R}} ROT_{rd}\,\bigl(1 - y_{r,d-1} - y_{rd}\bigr) + h^{P}_{d} \ge PL_d \qquad \forall d \in \mathcal{L}
+\end{align*}
+El lado izquierdo cuenta cuántos residentes están realmente en el servicio el día $d$ para la planta y las consultas:
+\begin{itemize}
+  \item $ROT_{rd} = 1$ selecciona a los residentes que ese día tienen actividad ordinaria prevista (no están de vacaciones, rotación externa ni curso).
+  \item El factor $(1 - y_{r,d-1})$ resta a los \emph{salientes de guardia}. Una guardia empieza un día y termina a la mañana siguiente; quien estuvo de guardia el día anterior ($y_{r,d-1} = 1$) sale de guardia por la mañana y se va a descansar, así que no trabaja en planta el día $d$ y no cuenta. Por ejemplo, si un residente hace guardia el lunes, el martes es saliente: está en el hospital hasta las 8:00 pero ese martes no cuenta para la planta. Para $d = 1$ el día anterior es el último del mes anterior, dado por $Y_{r0}$.
+  \item En el escenario A, quien está de guardia el día $d$ trabaja primero su jornada de mañana y luego empieza la guardia, así que sí cuenta. En el escenario B la jornada ordinaria y la guardia consecutivas no pueden superar 17~h, así que quien está de guardia el día $d$ no hace la jornada de mañana y tampoco cuenta: de ahí el término $-y_{rd}$.
+\end{itemize}
+Por (4), $y_{r,d-1} + y_{rd} \le 1$, así que el factor vale siempre 0 o 1. Si hay menos de $PL_d$ residentes presentes, $h^{P}_{d}$ dice cuántos faltan. Esta restricción liga el cuadrante de guardias con el funcionamiento diario del servicio: cada guardia en víspera de día laborable cuesta un residente en planta al día siguiente.
+
+\restr{10}{Horas de guardia al mes (solo escenario B)}
+\[
+\sum_{d \in \mathcal{D}} \sum_{g \in \mathcal{G}} T_g\, x_{rdg} \le 68 + 17\, C_r \qquad \forall r \in \mathcal{R}
+\]
+Como máximo 68~h de guardia al mes (cuatro módulos de 17~h), más 17~h si el residente tiene autorizado un módulo adicional. $C_r$ es un dato y no una decisión: el módulo adicional solo se justifica por razones formativas y con consentimiento, así que el modelo no puede usarlo para tapar huecos.
+
+\subsection{Garantía de factibilidad}
+
+El modelo siempre tiene solución: $x_{rdg} = 0$ para todo $r, d, g$, con cada déficit igual a su requisito ($h_{dg} = N_{dg}$, $h^{S}_{dg} = S_{dg}$, $h^{P}_{d} = PL_d$, $h^{G}_{r} = G^{\min}_r$), $v_{rd} = 0$ y $e^{\max}$, $e^{\min}$ iguales al máximo y al mínimo de $H_r / \Phi_r$, cumple todas las restricciones. Todo requisito que puede fallar se mide con una variable de déficit en lugar de imponerse como restricción dura. Por eso, en un mes que no se puede cubrir, el modelo no responde «infactible» sino que dice exactamente qué falta y cuándo; un estado «infactible» solo puede indicar un error en los datos.
+
+% =====================================================================
+\section{Implementación y reproducibilidad}
+\label{sec:impl}
+
+\paragraph{Código.} El modelo está implementado en Python con \texttt{gurobipy} y organizado en tres notebooks:
+\begin{itemize}
+  \item \texttt{01\_synthetic\_data\_generation.ipynb}: genera y valida las siete instancias (\texttt{data/synthetic/}).
+  \item \texttt{02\_baseline\_model.ipynb}: construye el modelo (una función por restricción, precedida de su ecuación), lo resuelve, valida el cuadrante y calcula los indicadores.
+  \item \texttt{03\_analysis.ipynb}: reproduce todos los resultados, tablas y figuras de este informe reutilizando el modelo del notebook 02.
+\end{itemize}
+
+\paragraph{Decisiones de implementación.}
+\begin{itemize}
+  \item $x_{rdg}$ solo se crea donde $E_{rdg} = 1$, lo que implementa (3a) sin restricciones explícitas y reduce el tamaño del modelo.
+  \item El objetivo lexicográfico usa la optimización multiobjetivo jerárquica de Gurobi (\texttt{setObjectiveN}) con prioridades decrecientes, sin degradación permitida y con cada nivel resuelto hasta optimalidad probada (\texttt{MIPGap} = 0).
+  \item Tras resolver, una función independiente de Gurobi comprueba sobre el cuadrante todas las restricciones duras, y todos los indicadores se calculan a partir de $x$, no de las variables de holgura (que solo están ajustadas en el nivel en que se penalizan). En todos los experimentos de este informe (más de 500 resoluciones) la validación no detectó ninguna violación.
+  \item \textbf{Aproximación del escenario B.} Sin el rediseño de las guardias del servicio no conocemos las duraciones $T_g$. Suponemos que todas las guardias son módulos de 17~h, de modo que (10) equivale a un máximo de $4 + C_r$ guardias al mes con $C_r = 0$, y usamos la versión B de (9). Como las guardias de 24~h de fin de semana tendrán que partirse, esta aproximación probablemente subestima las necesidades de B.
+\end{itemize}
+
+\paragraph{Tamaño y tiempo de resolución.} Para un mes de 31 días el modelo tiene unas 1\,350 variables (unas 750 binarias) y 1\,400 restricciones, y se resuelve en menos de un segundo en un portátil (Tabla~\ref{tab:base}). La licencia de Gurobi incluida con \texttt{pip} limita el modelo a 2\,000 variables y restricciones: basta para los meses base, pero los experimentos con plantillas ampliadas necesitan la licencia académica.
+
+\paragraph{Reproducibilidad.} Los resultados se reproducen instalando \texttt{requirements.txt}, instalando una licencia académica de Gurobi y ejecutando los notebooks 01, 02 y 03 en orden (instrucciones en el \texttt{README.md} de la entrega). Las tablas de resultados se guardan en \texttt{results/tables/} y las figuras en \texttt{results/figures/}. Los indicadores que el modelo optimiza ($f_1$ a $f_4$) son únicos, pero puede haber varios cuadrantes óptimos; indicadores que no se optimizan, como el rango de guardias por residente, pueden variar ligeramente entre versiones de Gurobi.

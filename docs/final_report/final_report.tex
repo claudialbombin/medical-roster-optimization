@@ -1,0 +1,58 @@
+\documentclass[10pt,a4paper]{article}
+% Compile with XeLaTeX or LuaLaTeX (e.g. tectonic final_report.tex): UTF-8 text with fontspec.
+\usepackage[spanish,es-noshorthands,es-tabla]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{fontspec}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{booktabs,tabularx,longtable,multirow,makecell}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+
+\definecolor{navy}{HTML}{1F3A60}
+\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries\color{navy}}{\thesubsection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\captionsetup{font=small,labelfont=bf}
+\setlist{itemsep=2pt,topsep=3pt}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{4pt}
+\renewcommand{\arraystretch}{1.18}
+\graphicspath{{../../results/figures/}{../results/figures/}} % repository / delivery zip
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\color{navy}\rule{\linewidth}{1.2pt}}\\[14pt]
+{\Huge\bfseries\color{navy} Cuadrantes de guardias médicas\\[6pt] justos y factibles}\\[14pt]
+{\Large Informe final del proyecto}\\[4pt]
+{\large Optimización y Simulación · Curso 2026--2027}\\[10pt]
+{\color{navy}\rule{\linewidth}{1.2pt}}\\[2cm]
+{\large Miguel Troyano Martín\\[2pt] Claudia María López Bombín\\[2pt] María Teresa Sangil Terrés}\\[2cm]
+{\large Segunda entrega intermedia, con el formato de la entrega final}\\[4pt]
+{\large Noviembre de 2026}
+\vfill
+{\small Todos los resultados se han obtenido con datos sintéticos generados de forma reproducible.\\ No describen ningún hospital real.}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+
+\input{summary.tex}
+
+\tableofcontents
+\newpage
+
+\input{part1_model.tex}
+\input{part2_results.tex}
+\input{appendix.tex}
+
+\end{document}

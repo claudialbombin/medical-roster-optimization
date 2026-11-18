@@ -1,0 +1,397 @@
+month,regime,change,draw,staff,uncovered,seniors,ordinary,f1
+jan2027_base,A: máx. 7 guardias/mes,-1,0,13,2,0,0,2
+jan2027_base,A: máx. 7 guardias/mes,-1,1,13,2,0,0,2
+jan2027_base,A: máx. 7 guardias/mes,-1,2,13,2,0,0,2
+jan2027_base,A: máx. 7 guardias/mes,-1,3,13,2,0,0,2
+jan2027_base,A: máx. 7 guardias/mes,-1,4,13,2,0,0,2
+jan2027_base,A: máx. 7 guardias/mes,-2,0,12,9,0,0,9
+jan2027_base,A: máx. 7 guardias/mes,-2,1,12,9,0,0,9
+jan2027_base,A: máx. 7 guardias/mes,-2,2,12,9,0,0,9
+jan2027_base,A: máx. 7 guardias/mes,-2,3,12,9,0,0,9
+jan2027_base,A: máx. 7 guardias/mes,-2,4,12,9,0,0,9
+jan2027_base,A: máx. 7 guardias/mes,-3,0,11,21,0,4,25
+jan2027_base,A: máx. 7 guardias/mes,-3,1,11,21,0,4,25
+jan2027_base,A: máx. 7 guardias/mes,-3,2,11,22,0,3,25
+jan2027_base,A: máx. 7 guardias/mes,-3,3,11,19,0,2,21
+jan2027_base,A: máx. 7 guardias/mes,-3,4,11,20,0,5,25
+jan2027_base,A: máx. 7 guardias/mes,-4,0,10,34,0,8,42
+jan2027_base,A: máx. 7 guardias/mes,-4,1,10,32,0,8,40
+jan2027_base,A: máx. 7 guardias/mes,-4,2,10,32,0,8,40
+jan2027_base,A: máx. 7 guardias/mes,-4,3,10,33,0,7,40
+jan2027_base,A: máx. 7 guardias/mes,-4,4,10,33,0,11,44
+jan2027_base,A: máx. 7 guardias/mes,0,0,14,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,1,0,15,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,2,0,16,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,3,0,17,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,4,0,18,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,5,0,19,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,6,0,20,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,7,0,21,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,8,0,22,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,9,0,23,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,10,0,24,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,11,0,25,0,0,0,0
+jan2027_base,A: máx. 7 guardias/mes,12,0,26,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,-1,0,13,15,0,0,15
+jan2027_base,A: máx. 6 guardias/mes,-1,1,13,15,0,0,15
+jan2027_base,A: máx. 6 guardias/mes,-1,2,13,15,0,0,15
+jan2027_base,A: máx. 6 guardias/mes,-1,3,13,15,0,0,15
+jan2027_base,A: máx. 6 guardias/mes,-1,4,13,15,0,0,15
+jan2027_base,A: máx. 6 guardias/mes,-2,0,12,21,0,0,21
+jan2027_base,A: máx. 6 guardias/mes,-2,1,12,21,0,0,21
+jan2027_base,A: máx. 6 guardias/mes,-2,2,12,21,0,0,21
+jan2027_base,A: máx. 6 guardias/mes,-2,3,12,21,0,0,21
+jan2027_base,A: máx. 6 guardias/mes,-2,4,12,21,0,0,21
+jan2027_base,A: máx. 6 guardias/mes,-3,0,11,27,2,0,29
+jan2027_base,A: máx. 6 guardias/mes,-3,1,11,27,2,1,30
+jan2027_base,A: máx. 6 guardias/mes,-3,2,11,27,3,0,30
+jan2027_base,A: máx. 6 guardias/mes,-3,3,11,27,0,0,27
+jan2027_base,A: máx. 6 guardias/mes,-3,4,11,27,2,0,29
+jan2027_base,A: máx. 6 guardias/mes,-4,0,10,36,1,6,43
+jan2027_base,A: máx. 6 guardias/mes,-4,1,10,35,0,5,40
+jan2027_base,A: máx. 6 guardias/mes,-4,2,10,35,0,5,40
+jan2027_base,A: máx. 6 guardias/mes,-4,3,10,34,0,6,40
+jan2027_base,A: máx. 6 guardias/mes,-4,4,10,36,1,8,45
+jan2027_base,A: máx. 6 guardias/mes,0,0,14,9,0,0,9
+jan2027_base,A: máx. 6 guardias/mes,1,0,15,3,0,0,3
+jan2027_base,A: máx. 6 guardias/mes,2,0,16,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,3,0,17,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,4,0,18,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,5,0,19,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,6,0,20,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,7,0,21,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,8,0,22,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,9,0,23,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,10,0,24,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,11,0,25,0,0,0,0
+jan2027_base,A: máx. 6 guardias/mes,12,0,26,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,-1,0,13,28,0,0,28
+jan2027_base,A: máx. 5 guardias/mes,-1,1,13,28,0,0,28
+jan2027_base,A: máx. 5 guardias/mes,-1,2,13,28,0,0,28
+jan2027_base,A: máx. 5 guardias/mes,-1,3,13,28,0,0,28
+jan2027_base,A: máx. 5 guardias/mes,-1,4,13,28,0,0,28
+jan2027_base,A: máx. 5 guardias/mes,-2,0,12,33,0,0,33
+jan2027_base,A: máx. 5 guardias/mes,-2,1,12,33,0,0,33
+jan2027_base,A: máx. 5 guardias/mes,-2,2,12,33,1,0,34
+jan2027_base,A: máx. 5 guardias/mes,-2,3,12,33,0,0,33
+jan2027_base,A: máx. 5 guardias/mes,-2,4,12,33,0,0,33
+jan2027_base,A: máx. 5 guardias/mes,-3,0,11,38,2,0,40
+jan2027_base,A: máx. 5 guardias/mes,-3,1,11,38,6,1,45
+jan2027_base,A: máx. 5 guardias/mes,-3,2,11,38,6,0,44
+jan2027_base,A: máx. 5 guardias/mes,-3,3,11,38,0,0,38
+jan2027_base,A: máx. 5 guardias/mes,-3,4,11,38,2,0,40
+jan2027_base,A: máx. 5 guardias/mes,-4,0,10,43,6,1,50
+jan2027_base,A: máx. 5 guardias/mes,-4,1,10,43,3,0,46
+jan2027_base,A: máx. 5 guardias/mes,-4,2,10,43,3,1,47
+jan2027_base,A: máx. 5 guardias/mes,-4,3,10,43,3,1,47
+jan2027_base,A: máx. 5 guardias/mes,-4,4,10,43,6,4,53
+jan2027_base,A: máx. 5 guardias/mes,0,0,14,23,0,0,23
+jan2027_base,A: máx. 5 guardias/mes,1,0,15,18,0,0,18
+jan2027_base,A: máx. 5 guardias/mes,2,0,16,13,0,0,13
+jan2027_base,A: máx. 5 guardias/mes,3,0,17,8,0,0,8
+jan2027_base,A: máx. 5 guardias/mes,4,0,18,3,0,0,3
+jan2027_base,A: máx. 5 guardias/mes,5,0,19,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,6,0,20,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,7,0,21,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,8,0,22,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,9,0,23,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,10,0,24,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,11,0,25,0,0,0,0
+jan2027_base,A: máx. 5 guardias/mes,12,0,26,0,0,0,0
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-1,0,13,41,3,0,44
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-1,1,13,41,0,0,41
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-1,2,13,41,0,0,41
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-1,3,13,41,3,0,44
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-1,4,13,41,0,0,41
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-2,0,12,45,3,0,48
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-2,1,12,45,3,0,48
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-2,2,12,45,7,0,52
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-2,3,12,45,3,0,48
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-2,4,12,45,3,0,48
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-3,0,11,50,7,0,57
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-3,1,11,50,11,1,62
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-3,2,11,50,11,0,61
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-3,3,11,49,3,0,52
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-3,4,11,49,7,1,57
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-4,0,10,55,11,7,73
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-4,1,10,53,9,8,70
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-4,2,10,55,9,7,71
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-4,3,10,54,9,8,71
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),-4,4,10,56,11,10,77
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),0,0,14,37,0,0,37
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),1,0,15,33,0,0,33
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),2,0,16,29,0,0,29
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),3,0,17,25,0,0,25
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),4,0,18,21,0,0,21
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),5,0,19,17,0,0,17
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),6,0,20,13,0,0,13
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),7,0,21,9,0,0,9
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),8,0,22,5,0,0,5
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),9,0,23,1,0,0,1
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),10,0,24,0,0,0,0
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),11,0,25,0,0,0,0
+jan2027_base,B: RD 951/2026 (máx. 4 × 17 h),12,0,26,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,-1,0,13,8,0,3,11
+dec2026_christmas,A: máx. 7 guardias/mes,-1,1,13,8,0,3,11
+dec2026_christmas,A: máx. 7 guardias/mes,-1,2,13,8,0,3,11
+dec2026_christmas,A: máx. 7 guardias/mes,-1,3,13,8,0,0,8
+dec2026_christmas,A: máx. 7 guardias/mes,-1,4,13,7,0,0,7
+dec2026_christmas,A: máx. 7 guardias/mes,-2,0,12,11,0,6,17
+dec2026_christmas,A: máx. 7 guardias/mes,-2,1,12,13,0,8,21
+dec2026_christmas,A: máx. 7 guardias/mes,-2,2,12,12,0,2,14
+dec2026_christmas,A: máx. 7 guardias/mes,-2,3,12,13,0,8,21
+dec2026_christmas,A: máx. 7 guardias/mes,-2,4,12,14,0,3,17
+dec2026_christmas,A: máx. 7 guardias/mes,-3,0,11,23,0,15,38
+dec2026_christmas,A: máx. 7 guardias/mes,-3,1,11,25,0,12,37
+dec2026_christmas,A: máx. 7 guardias/mes,-3,2,11,22,0,16,38
+dec2026_christmas,A: máx. 7 guardias/mes,-3,3,11,24,0,11,35
+dec2026_christmas,A: máx. 7 guardias/mes,-3,4,11,24,0,10,34
+dec2026_christmas,A: máx. 7 guardias/mes,-4,0,10,34,0,22,56
+dec2026_christmas,A: máx. 7 guardias/mes,-4,1,10,33,0,25,58
+dec2026_christmas,A: máx. 7 guardias/mes,-4,2,10,34,0,19,53
+dec2026_christmas,A: máx. 7 guardias/mes,-4,3,10,34,0,23,57
+dec2026_christmas,A: máx. 7 guardias/mes,-4,4,10,34,0,22,56
+dec2026_christmas,A: máx. 7 guardias/mes,0,0,14,5,0,1,6
+dec2026_christmas,A: máx. 7 guardias/mes,1,0,15,2,0,0,2
+dec2026_christmas,A: máx. 7 guardias/mes,2,0,16,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,3,0,17,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,4,0,18,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,5,0,19,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,6,0,20,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,7,0,21,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,8,0,22,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,9,0,23,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,10,0,24,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,11,0,25,0,0,0,0
+dec2026_christmas,A: máx. 7 guardias/mes,12,0,26,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,-1,0,13,15,0,3,18
+dec2026_christmas,A: máx. 6 guardias/mes,-1,1,13,15,1,2,18
+dec2026_christmas,A: máx. 6 guardias/mes,-1,2,13,15,0,3,18
+dec2026_christmas,A: máx. 6 guardias/mes,-1,3,13,15,0,0,15
+dec2026_christmas,A: máx. 6 guardias/mes,-1,4,13,15,0,0,15
+dec2026_christmas,A: máx. 6 guardias/mes,-2,0,12,21,0,3,24
+dec2026_christmas,A: máx. 6 guardias/mes,-2,1,12,21,0,7,28
+dec2026_christmas,A: máx. 6 guardias/mes,-2,2,12,21,1,1,23
+dec2026_christmas,A: máx. 6 guardias/mes,-2,3,12,21,1,6,28
+dec2026_christmas,A: máx. 6 guardias/mes,-2,4,12,21,1,2,24
+dec2026_christmas,A: máx. 6 guardias/mes,-3,0,11,27,0,14,41
+dec2026_christmas,A: máx. 6 guardias/mes,-3,1,11,27,0,12,39
+dec2026_christmas,A: máx. 6 guardias/mes,-3,2,11,27,0,14,41
+dec2026_christmas,A: máx. 6 guardias/mes,-3,3,11,27,0,10,37
+dec2026_christmas,A: máx. 6 guardias/mes,-3,4,11,27,2,7,36
+dec2026_christmas,A: máx. 6 guardias/mes,-4,0,10,35,0,21,56
+dec2026_christmas,A: máx. 6 guardias/mes,-4,1,10,34,0,24,58
+dec2026_christmas,A: máx. 6 guardias/mes,-4,2,10,36,1,17,54
+dec2026_christmas,A: máx. 6 guardias/mes,-4,3,10,36,2,21,59
+dec2026_christmas,A: máx. 6 guardias/mes,-4,4,10,36,0,20,56
+dec2026_christmas,A: máx. 6 guardias/mes,0,0,14,9,0,0,9
+dec2026_christmas,A: máx. 6 guardias/mes,1,0,15,3,0,0,3
+dec2026_christmas,A: máx. 6 guardias/mes,2,0,16,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,3,0,17,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,4,0,18,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,5,0,19,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,6,0,20,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,7,0,21,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,8,0,22,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,9,0,23,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,10,0,24,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,11,0,25,0,0,0,0
+dec2026_christmas,A: máx. 6 guardias/mes,12,0,26,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,-1,0,13,28,0,3,31
+dec2026_christmas,A: máx. 5 guardias/mes,-1,1,13,28,2,1,31
+dec2026_christmas,A: máx. 5 guardias/mes,-1,2,13,28,0,3,31
+dec2026_christmas,A: máx. 5 guardias/mes,-1,3,13,28,0,0,28
+dec2026_christmas,A: máx. 5 guardias/mes,-1,4,13,28,0,0,28
+dec2026_christmas,A: máx. 5 guardias/mes,-2,0,12,33,0,3,36
+dec2026_christmas,A: máx. 5 guardias/mes,-2,1,12,33,0,7,40
+dec2026_christmas,A: máx. 5 guardias/mes,-2,2,12,33,2,0,35
+dec2026_christmas,A: máx. 5 guardias/mes,-2,3,12,33,2,5,40
+dec2026_christmas,A: máx. 5 guardias/mes,-2,4,12,33,2,1,36
+dec2026_christmas,A: máx. 5 guardias/mes,-3,0,11,38,1,13,52
+dec2026_christmas,A: máx. 5 guardias/mes,-3,1,11,38,4,8,50
+dec2026_christmas,A: máx. 5 guardias/mes,-3,2,11,38,4,10,52
+dec2026_christmas,A: máx. 5 guardias/mes,-3,3,11,38,2,8,48
+dec2026_christmas,A: máx. 5 guardias/mes,-3,4,11,38,6,3,47
+dec2026_christmas,A: máx. 5 guardias/mes,-4,0,10,43,0,19,62
+dec2026_christmas,A: máx. 5 guardias/mes,-4,1,10,43,2,22,67
+dec2026_christmas,A: máx. 5 guardias/mes,-4,2,10,43,4,14,61
+dec2026_christmas,A: máx. 5 guardias/mes,-4,3,10,43,7,16,66
+dec2026_christmas,A: máx. 5 guardias/mes,-4,4,10,43,4,16,63
+dec2026_christmas,A: máx. 5 guardias/mes,0,0,14,23,0,0,23
+dec2026_christmas,A: máx. 5 guardias/mes,1,0,15,18,0,0,18
+dec2026_christmas,A: máx. 5 guardias/mes,2,0,16,13,0,0,13
+dec2026_christmas,A: máx. 5 guardias/mes,3,0,17,8,0,0,8
+dec2026_christmas,A: máx. 5 guardias/mes,4,0,18,3,0,0,3
+dec2026_christmas,A: máx. 5 guardias/mes,5,0,19,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,6,0,20,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,7,0,21,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,8,0,22,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,9,0,23,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,10,0,24,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,11,0,25,0,0,0,0
+dec2026_christmas,A: máx. 5 guardias/mes,12,0,26,0,0,0,0
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-1,0,13,41,3,2,46
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-1,1,13,41,4,1,46
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-1,2,13,41,3,2,46
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-1,3,13,41,2,0,43
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-1,4,13,41,2,0,43
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-2,0,12,45,2,4,51
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-2,1,12,45,4,9,58
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-2,2,12,45,7,0,52
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-2,3,12,45,4,9,58
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-2,4,12,46,7,3,56
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-3,0,11,51,5,16,72
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-3,1,11,51,8,13,72
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-3,2,11,51,7,15,73
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-3,3,11,50,6,12,68
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-3,4,11,52,11,7,70
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-4,0,10,55,9,23,87
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-4,1,10,55,10,27,92
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-4,2,10,55,11,20,86
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-4,3,10,59,12,22,93
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),-4,4,10,56,10,22,88
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),0,0,14,37,2,0,39
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),1,0,15,33,0,0,33
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),2,0,16,29,0,0,29
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),3,0,17,25,0,0,25
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),4,0,18,21,0,0,21
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),5,0,19,17,0,0,17
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),6,0,20,13,0,0,13
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),7,0,21,9,0,0,9
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),8,0,22,5,0,0,5
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),9,0,23,1,0,0,1
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),10,0,24,0,0,0,0
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),11,0,25,0,0,0,0
+dec2026_christmas,B: RD 951/2026 (máx. 4 × 17 h),12,0,26,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,-1,0,13,29,0,27,56
+aug2027_summer,A: máx. 7 guardias/mes,-1,1,13,29,0,18,47
+aug2027_summer,A: máx. 7 guardias/mes,-1,2,13,22,0,24,46
+aug2027_summer,A: máx. 7 guardias/mes,-1,3,13,30,0,26,56
+aug2027_summer,A: máx. 7 guardias/mes,-1,4,13,25,0,21,46
+aug2027_summer,A: máx. 7 guardias/mes,-2,0,12,28,0,28,56
+aug2027_summer,A: máx. 7 guardias/mes,-2,1,12,31,0,35,66
+aug2027_summer,A: máx. 7 guardias/mes,-2,2,12,35,0,42,77
+aug2027_summer,A: máx. 7 guardias/mes,-2,3,12,35,0,42,77
+aug2027_summer,A: máx. 7 guardias/mes,-2,4,12,35,0,42,77
+aug2027_summer,A: máx. 7 guardias/mes,-3,0,11,40,0,39,79
+aug2027_summer,A: máx. 7 guardias/mes,-3,1,11,39,0,51,90
+aug2027_summer,A: máx. 7 guardias/mes,-3,2,11,39,0,50,89
+aug2027_summer,A: máx. 7 guardias/mes,-3,3,11,37,0,43,80
+aug2027_summer,A: máx. 7 guardias/mes,-3,4,11,39,0,40,79
+aug2027_summer,A: máx. 7 guardias/mes,-4,0,10,42,0,39,81
+aug2027_summer,A: máx. 7 guardias/mes,-4,1,10,40,0,63,103
+aug2027_summer,A: máx. 7 guardias/mes,-4,2,10,43,0,59,102
+aug2027_summer,A: máx. 7 guardias/mes,-4,3,10,42,0,49,91
+aug2027_summer,A: máx. 7 guardias/mes,-4,4,10,43,0,59,102
+aug2027_summer,A: máx. 7 guardias/mes,0,0,14,24,0,15,39
+aug2027_summer,A: máx. 7 guardias/mes,1,0,15,15,0,9,24
+aug2027_summer,A: máx. 7 guardias/mes,2,0,16,9,0,4,13
+aug2027_summer,A: máx. 7 guardias/mes,3,0,17,5,0,0,5
+aug2027_summer,A: máx. 7 guardias/mes,4,0,18,2,0,0,2
+aug2027_summer,A: máx. 7 guardias/mes,5,0,19,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,6,0,20,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,7,0,21,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,8,0,22,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,9,0,23,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,10,0,24,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,11,0,25,0,0,0,0
+aug2027_summer,A: máx. 7 guardias/mes,12,0,26,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,-1,0,13,30,0,26,56
+aug2027_summer,A: máx. 6 guardias/mes,-1,1,13,30,0,17,47
+aug2027_summer,A: máx. 6 guardias/mes,-1,2,13,25,0,21,46
+aug2027_summer,A: máx. 6 guardias/mes,-1,3,13,30,0,26,56
+aug2027_summer,A: máx. 6 guardias/mes,-1,4,13,25,0,21,46
+aug2027_summer,A: máx. 6 guardias/mes,-2,0,12,29,0,27,56
+aug2027_summer,A: máx. 6 guardias/mes,-2,1,12,34,0,32,66
+aug2027_summer,A: máx. 6 guardias/mes,-2,2,12,35,0,42,77
+aug2027_summer,A: máx. 6 guardias/mes,-2,3,12,35,0,42,77
+aug2027_summer,A: máx. 6 guardias/mes,-2,4,12,35,0,42,77
+aug2027_summer,A: máx. 6 guardias/mes,-3,0,11,40,0,39,79
+aug2027_summer,A: máx. 6 guardias/mes,-3,1,11,41,0,49,90
+aug2027_summer,A: máx. 6 guardias/mes,-3,2,11,39,0,50,89
+aug2027_summer,A: máx. 6 guardias/mes,-3,3,11,38,0,42,80
+aug2027_summer,A: máx. 6 guardias/mes,-3,4,11,44,2,38,84
+aug2027_summer,A: máx. 6 guardias/mes,-4,0,10,42,0,39,81
+aug2027_summer,A: máx. 6 guardias/mes,-4,1,10,48,4,55,107
+aug2027_summer,A: máx. 6 guardias/mes,-4,2,10,43,0,59,102
+aug2027_summer,A: máx. 6 guardias/mes,-4,3,10,42,0,49,91
+aug2027_summer,A: máx. 6 guardias/mes,-4,4,10,43,0,59,102
+aug2027_summer,A: máx. 6 guardias/mes,0,0,14,24,0,15,39
+aug2027_summer,A: máx. 6 guardias/mes,1,0,15,18,0,6,24
+aug2027_summer,A: máx. 6 guardias/mes,2,0,16,10,0,3,13
+aug2027_summer,A: máx. 6 guardias/mes,3,0,17,5,0,0,5
+aug2027_summer,A: máx. 6 guardias/mes,4,0,18,2,0,0,2
+aug2027_summer,A: máx. 6 guardias/mes,5,0,19,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,6,0,20,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,7,0,21,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,8,0,22,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,9,0,23,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,10,0,24,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,11,0,25,0,0,0,0
+aug2027_summer,A: máx. 6 guardias/mes,12,0,26,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,-1,0,13,30,0,26,56
+aug2027_summer,A: máx. 5 guardias/mes,-1,1,13,31,0,16,47
+aug2027_summer,A: máx. 5 guardias/mes,-1,2,13,28,1,20,49
+aug2027_summer,A: máx. 5 guardias/mes,-1,3,13,30,0,26,56
+aug2027_summer,A: máx. 5 guardias/mes,-1,4,13,28,0,21,49
+aug2027_summer,A: máx. 5 guardias/mes,-2,0,12,33,2,25,60
+aug2027_summer,A: máx. 5 guardias/mes,-2,1,12,34,0,32,66
+aug2027_summer,A: máx. 5 guardias/mes,-2,2,12,39,3,39,81
+aug2027_summer,A: máx. 5 guardias/mes,-2,3,12,37,1,43,81
+aug2027_summer,A: máx. 5 guardias/mes,-2,4,12,37,1,43,81
+aug2027_summer,A: máx. 5 guardias/mes,-3,0,11,42,1,38,81
+aug2027_summer,A: máx. 5 guardias/mes,-3,1,11,46,3,46,95
+aug2027_summer,A: máx. 5 guardias/mes,-3,2,11,44,2,47,93
+aug2027_summer,A: máx. 5 guardias/mes,-3,3,11,43,2,40,85
+aug2027_summer,A: máx. 5 guardias/mes,-3,4,11,49,7,33,89
+aug2027_summer,A: máx. 5 guardias/mes,-4,0,10,46,2,37,85
+aug2027_summer,A: máx. 5 guardias/mes,-4,1,10,51,8,53,112
+aug2027_summer,A: máx. 5 guardias/mes,-4,2,10,47,4,56,107
+aug2027_summer,A: máx. 5 guardias/mes,-4,3,10,47,4,46,97
+aug2027_summer,A: máx. 5 guardias/mes,-4,4,10,48,3,56,107
+aug2027_summer,A: máx. 5 guardias/mes,0,0,14,24,0,15,39
+aug2027_summer,A: máx. 5 guardias/mes,1,0,15,18,0,6,24
+aug2027_summer,A: máx. 5 guardias/mes,2,0,16,13,0,3,16
+aug2027_summer,A: máx. 5 guardias/mes,3,0,17,8,0,0,8
+aug2027_summer,A: máx. 5 guardias/mes,4,0,18,3,0,0,3
+aug2027_summer,A: máx. 5 guardias/mes,5,0,19,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,6,0,20,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,7,0,21,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,8,0,22,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,9,0,23,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,10,0,24,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,11,0,25,0,0,0,0
+aug2027_summer,A: máx. 5 guardias/mes,12,0,26,0,0,0,0
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-1,0,13,52,8,29,89
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-1,1,13,50,7,22,79
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-1,2,13,52,6,21,79
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-1,3,13,50,8,31,89
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-1,4,13,52,6,21,79
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-2,0,12,51,6,33,90
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-2,1,12,57,8,35,100
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-2,2,12,58,11,41,110
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-2,3,12,59,12,39,110
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-2,4,12,59,12,39,110
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-3,0,11,60,12,40,112
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-3,1,11,61,14,47,122
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-3,2,11,63,15,44,122
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-3,3,11,58,11,43,112
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-3,4,11,61,15,37,113
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-4,0,10,61,13,40,114
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-4,1,10,63,15,56,134
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-4,2,10,62,13,59,134
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-4,3,10,63,14,47,124
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),-4,4,10,63,15,56,134
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),0,0,14,47,4,19,70
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),1,0,15,41,4,8,53
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),2,0,16,33,2,2,37
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),3,0,17,25,1,1,27
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),4,0,18,21,0,0,21
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),5,0,19,17,0,0,17
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),6,0,20,13,0,0,13
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),7,0,21,9,0,0,9
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),8,0,22,5,0,0,5
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),9,0,23,1,0,0,1
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),10,0,24,0,0,0,0
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),11,0,25,0,0,0,0
+aug2027_summer,B: RD 951/2026 (máx. 4 × 17 h),12,0,26,0,0,0,0

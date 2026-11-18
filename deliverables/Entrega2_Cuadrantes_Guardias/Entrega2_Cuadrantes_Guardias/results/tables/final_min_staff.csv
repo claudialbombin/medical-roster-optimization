@@ -1,0 +1,13 @@
+month,regime,residents now,lower bound ceil(positions / cap),needed: all requirements,needed: duties only,extra: all requirements,extra: duties only
+Enero 2027,A: máx. 7 guardias/mes,14,14,14,14,0,0
+Enero 2027,A: máx. 6 guardias/mes,14,16,16,16,2,2
+Enero 2027,A: máx. 5 guardias/mes,14,19,19,19,5,5
+Enero 2027,B: RD 951/2026 (máx. 4 × 17 h),14,24,24,24,10,10
+Diciembre 2026,A: máx. 7 guardias/mes,14,14,16,14,2,0
+Diciembre 2026,A: máx. 6 guardias/mes,14,16,16,16,2,2
+Diciembre 2026,A: máx. 5 guardias/mes,14,19,19,19,5,5
+Diciembre 2026,B: RD 951/2026 (máx. 4 × 17 h),14,24,24,24,10,10
+Agosto 2027,A: máx. 7 guardias/mes,14,14,19,14,5,0
+Agosto 2027,A: máx. 6 guardias/mes,14,16,19,16,5,2
+Agosto 2027,A: máx. 5 guardias/mes,14,19,19,19,5,5
+Agosto 2027,B: RD 951/2026 (máx. 4 × 17 h),14,24,24,24,10,10

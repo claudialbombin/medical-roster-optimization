@@ -2,7 +2,7 @@
 
 Fair and feasible monthly duty rosters for medical residents in Spanish public hospitals, formulated as a mixed-integer linear program (MILP) and solved with Gurobi.
 
-> **Status: in development.** Model checkpoint on 16 November 2026. The results section will be completed as the project progresses.
+> **Status: model complete.** The final report (second checkpoint, delivered in the final-submission format) is [`docs/final_report/final_report.pdf`](docs/final_report/final_report.pdf), in Spanish.
 
 University project for the course *Optimization and Simulation* (academic year 2026–2027).
 Team: Miguel Troyano Martín · Claudia María López Bombín · María Teresa Sangil Terrés.
@@ -47,7 +47,9 @@ medical-roster-optimization/
 │   ├── README.md                          # data provenance and privacy rules
 │   └── synthetic/                         # generated instances (reproducible)
 ├── docs/
-│   └── formulation.md                     # mathematical model
+│   ├── formulation.md                     # mathematical model
+│   ├── checkpoint/                        # model checkpoint report (16 Nov 2026)
+│   └── final_report/                      # final report (LaTeX source and PDF)
 ├── notebooks/
 │   ├── 01_synthetic_data_generation.ipynb # builds and validates instances
 │   ├── 02_baseline_model.ipynb            # builds, solves and validates the model
@@ -88,7 +90,13 @@ No hospital data are used at this stage. All instances are **synthetic**: they a
 
 ## Results
 
-To be added.
+Main findings on the synthetic service of 15 residents (details, figures and sensitivity analysis in the final report; every number is reproduced by `notebooks/03_analysis.ipynb`):
+
+- **Baseline month (January 2027).** The model covers all 93 duty positions, respects all 17 day-off requests and reduces the weekend/holiday load gap from 21.7 to 14.8, in under a second. The service has no slack: one resident fewer already leaves duties uncovered.
+- **RD 951/2026.** With at most four 17-hour duties per resident, about 24 residents available for duties are needed instead of 14 if the duty structure is kept.
+- **Difficult months.** In December and August the binding constraint is the overlap of vacations, not nominal capacity. Every duty from Sunday to Thursday leaves a post-call resident off the ward the next day, so duty coverage and ordinary activity trade off one to one.
+- **Fairness needs memory.** Balancing each month on its own does not correct an unfair history; with memory the cumulative gap shrinks month after month.
+- **Requests and the alternate-day criterion cost no coverage**, but removing them changes the roster substantially.
 
 ## Limitations and possible extensions
 

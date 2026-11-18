@@ -1,0 +1,16 @@
+month,variant,f1,uncovered,ordinary,requests violated,f2,f3,f4,runtime (s)
+Enero 2027,Modelo (lexicográfico),0,0,0,0 / 17,0,14.78,1,0.32
+Enero 2027,Sin $f_2$ (peticiones),0,0,0,4 / 17,6,14.78,1,0.31
+Enero 2027,Sin $f_3$ (equidad),0,0,0,0 / 17,0,24.35,0,0.22
+Enero 2027,"Sin $f_4$ (día sí, día no)",0,0,0,0 / 17,0,14.78,16,0.2
+Enero 2027,Suma ponderada,0,0,0,0 / 17,0,14.86,0,0.21
+Diciembre 2026,Modelo (lexicográfico),6,5,1,0 / 12,0,23.08,0,0.26
+Diciembre 2026,Sin $f_2$ (peticiones),6,5,1,4 / 12,8,23.08,0,0.21
+Diciembre 2026,Sin $f_3$ (equidad),6,6,0,0 / 12,0,28.99,0,0.21
+Diciembre 2026,"Sin $f_4$ (día sí, día no)",6,6,0,0 / 12,0,23.08,23,0.18
+Diciembre 2026,Suma ponderada,6,5,1,0 / 12,0,23.08,0,0.11
+Agosto 2027,Modelo (lexicográfico),39,24,15,0 / 21,0,9.78,0,0.24
+Agosto 2027,Sin $f_2$ (peticiones),39,21,18,4 / 21,8,5.54,1,0.27
+Agosto 2027,Sin $f_3$ (equidad),39,24,15,0 / 21,0,13.18,0,0.2
+Agosto 2027,"Sin $f_4$ (día sí, día no)",39,22,17,0 / 21,0,9.78,14,0.19
+Agosto 2027,Suma ponderada,39,21,18,0 / 21,0,9.78,0,0.09
